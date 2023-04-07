@@ -28,11 +28,9 @@ for i in range(n_bootstraps):
 # Calculate the 95% confidence interval for the mean
 confidence_interval = np.percentile(bootstrap_means, [2.5, 97.5])
 ```
-In this example, we first generate a sample of 100 values drawn from a normal distribution with mean 10 and standard deviation 2. We then calculate the mean of the sample using the np.mean() function.
+In this example, we first generate a sample of 100 values drawn from a normal distribution with mean 10 and standard deviation 2. We then calculate the mean of the sample using the `np.mean()` function.
 
-Next, we generate 1000 bootstrap samples by drawing 100 values with replacement from the original sample using the np.random.choice() function. For each bootstrap sample, we calculate the mean using np.mean() and store the result in a list called bootstrap_means.
+Next, we generate 1000 bootstrap samples by drawing 100 values with replacement from the original sample using the `np.random.choice()` function. For each bootstrap sample, we calculate the mean using `np.mean()` and store the result in a list called bootstrap_means.
 
-Finally, we calculate the 95% confidence interval for the mean using the np.percentile() function. The confidence interval is calculated as the 2.5th and 97.5th percentiles of the bootstrap means.
-
-I hope this helps! Let me know if you have any more questions.
+Finally, we calculate the 95% confidence interval for the mean using the `np.percentile()` function. The confidence interval is calculated as the 2.5th and 97.5th percentiles of the bootstrap means.
 
