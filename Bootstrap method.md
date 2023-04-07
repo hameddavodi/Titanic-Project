@@ -34,3 +34,7 @@ Next, we generate 1000 bootstrap samples by drawing 100 values with replacement 
 
 Finally, we calculate the 95% confidence interval for the mean using the `np.percentile()` function. The confidence interval is calculated as the 2.5th and 97.5th percentiles of the bootstrap means.
 
+```python
+confidence_interval
+```
+array([ 9.57324432, 10.49708713])
