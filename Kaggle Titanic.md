@@ -85,7 +85,7 @@ Your submission was successfully saved!
 ```python
 print(output)
 ```
-
+```lua
    PassengerId  Survived
 0            892         0
 1            893         1
@@ -100,10 +100,11 @@ print(output)
 417         1309         0
 
 [418 rows x 2 columns]
-
+```
 ```python
 output['Survived'].describe
 ```
+```lua
 <bound method NDFrame.describe of 0      0
 1      1
 2      0
@@ -116,7 +117,7 @@ output['Survived'].describe
 416    0
 417    0
 Name: Survived, Length: 418, dtype: int64>
-
+```
 Also we can visally see the distribution of 0 and 1:
 
 ```python
