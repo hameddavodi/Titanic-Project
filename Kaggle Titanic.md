@@ -85,7 +85,8 @@ Your submission was successfully saved!
 ```python
 print(output)
 ```
-     PassengerId  Survived
+
+   PassengerId  Survived
 0            892         0
 1            893         1
 2            894         0
