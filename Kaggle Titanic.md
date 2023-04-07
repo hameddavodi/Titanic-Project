@@ -11,10 +11,6 @@ Next, we split the preprocessed data into training and testing sets, and train a
 
 Finally, we use the trained model to make predictions on a test set provided by Kaggle, and submit our results to see how well we did compared to other participants. This allows us to compare our approach to others, learn from their methods, and improve our model further.
 
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load
-
 ```python
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
