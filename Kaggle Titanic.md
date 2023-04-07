@@ -27,7 +27,9 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
 # You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
 ```
 /kaggle/input/titanic/train.csv
+
 /kaggle/input/titanic/test.csv
+
 /kaggle/input/titanic/gender_submission.csv
 
 ```python
@@ -40,9 +42,13 @@ print('Test List',test_data.columns)
 Train List Index(['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
        'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked'],
       dtype='object')
+      
+      
 Test List Index(['PassengerId', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch',
        'Ticket', 'Fare', 'Cabin', 'Embarked'],
       dtype='object')
+
+
 ```python
 women = train_data.loc[train_data.Sex == 'female']["Survived"]
 rate_women = sum(women)/len(women)
@@ -52,8 +58,11 @@ rate_men=sum(men)/len(men)
 print("% of women who survived:", rate_women*100)
 print("% of men who survived:", rate_men*100)
 ```
+
 % of women who survived: 74.20382165605095
+
 % of men who survived: 18.890814558058924
+
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
@@ -90,6 +99,7 @@ print(output)
 417         1309         0
 
 [418 rows x 2 columns]
+
 ```python
 output['Survived'].describe
 ```
@@ -107,6 +117,7 @@ output['Survived'].describe
 Name: Survived, Length: 418, dtype: int64>
 
 Also we can visally see the distribution of 0 and 1:
+
 ```python
 import seaborn as sns
 
