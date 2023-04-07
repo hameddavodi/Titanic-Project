@@ -38,3 +38,22 @@ Finally, we calculate the 95% confidence interval for the mean using the `np.per
 confidence_interval
 ```
 array([ 9.57324432, 10.49708713])
+
+and we can plot the bootstrap means with:
+```python 
+sns.displot(bootstrap_means)
+```
+
+![Untitled](https://user-images.githubusercontent.com/109058050/230631863-c40e35be-b570-4b24-8b77-cdf6e348de1f.png)
+
+Note: The bootstrap is a method for estimating the sampling distribution of a statistic by resampling data from an observed sample, with replacement. It is not a type of central limit theorem, but rather a computational technique that can be used to estimate the variability of a statistic.
+
+On the other hand, the central limit theorem (CLT) is a fundamental result in probability theory that states that the sum or average of a large number of random variables, each with finite mean and variance, will follow a normal distribution regardless of the underlying distribution of the individual variables. The CLT is a theoretical result that describes the behavior of distributions under certain conditions, while the bootstrap is a practical tool that can be used to estimate the variability of statistics based on observed data.
+
+In practice, the bootstrap can be used to approximate the standard error of a statistic, which is a key component of many hypothesis tests and confidence interval calculations. By repeatedly resampling the observed data and computing the statistic of interest, we can estimate the sampling distribution of the statistic and use it to calculate standard errors, confidence intervals, and p-values.
+
+
+
+So while the bootstrap and the central limit theorem are related concepts, they describe different things and serve different purposes.
+
+
