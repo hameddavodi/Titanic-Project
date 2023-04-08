@@ -649,7 +649,7 @@ plt.show()
 final_test['Survived'] = log_clf.predict(final_test[Selected_features])
 final_test['PassengerId'] = test_df['PassengerId']
 
-submission = final_test[['PassengerId','Survived']]
+ submission = final_test[['PassengerId','Survived']]
 
 submission.to_csv("submission.csv", index=False)
 
