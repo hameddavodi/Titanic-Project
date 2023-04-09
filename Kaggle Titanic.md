@@ -311,6 +311,36 @@ testing.drop('Ticket', axis=1, inplace=True)
 
 final_test = testing
 ```
+
+> Considering the survival rate of passengers under 16, I'll also include another categorical variable in my dataset: "Minor"
+
+```python
+final_train['IsMinor']=np.where(final_train['Age']<=16, 1, 0)
+
+final_test['IsMinor']=np.where(final_test['Age']<=16, 1, 0)
+```
+
 ### Regression OR ML
 
 #### Feature Selection
+
+> Recursive feature elimination
+    Given an external estimator that assigns weights to features, recursive feature elimination (RFE) is to select features by recursively considering smaller and smaller sets of features. First, the estimator is trained on the initial set of features and the importance of each feature is obtained either through a coef_ attribute or through a featureimportances attribute. Then, the least important features are pruned from current set of features.That procedure is recursively repeated on the pruned set until the desired number of features to select is eventually reached.
+
+References:
+http://scikit-learn.org/stable/modules/feature_selection.html
+
+Create Heatmap of the variables:
+
+```
+Selected_features = ['Age', 'TravelAlone', 'Pclass_1', 'Pclass_2', 'Embarked_C', 
+                     'Embarked_S', 'Sex_male', 'IsMinor']
+X = final_train[Selected_features]
+
+plt.subplots(figsize=(8, 5))
+sns.heatmap(X.corr(), annot=True, cmap="RdYlGn")
+plt.show()
+```
+
+<img width="522" alt="Screenshot 2023-04-09 at 11 57 56" src="https://user-images.githubusercontent.com/109058050/230766368-7e23ac86-45e6-4a4c-a9c6-5f47fd2bfd67.png">
+
