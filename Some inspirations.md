@@ -125,21 +125,35 @@ plt.show()
 ```
 
 ```
-Using the model Logistic Regression CV Av Accuracy Scores is 85.43% and the std is 5.39%
-Using the model Random Forest Classifier CV Av Accuracy Scores is 82.74% and the std is 5.66%
-Using the model Perceptron CV Av Accuracy Scores is 77.90% and the std is 12.62%
-Using the model SGD Classifier CV Av Accuracy Scores is 82.86% and the std is 7.34%
-Using the model Decision Tree Classifier CV Av Accuracy Scores is 82.28% and the std is 5.35%
-Using the model K-Nearest Neighbors Classifier CV Av Accuracy Scores is 84.53% and the std is 5.06%
-Using the model Support Vector Machines (SVC) CV Av Accuracy Scores is 86.00% and the std is 5.53%
-Using the model Gaussian Naive Bayes CV Av Accuracy Scores is 84.76% and the std is 5.85%
-Using the model Bagging Classifier CV Av Accuracy Scores is 84.32% and the std is 5.32%
-Using the model Gradient Boosting CV Av Accuracy Scores is 86.22% and the std is 4.66%
-Using the model XGBC CV Av Accuracy Scores is 84.77% and the std is 5.34%
-Using the model Hist Gradient Boosting Classifier CV Av Accuracy Scores is 84.20% and the std is 4.81%
-Using the model LGBM CV Av Accuracy Scores is 84.31% and the std is 5.04%
-Using the model ADABoost CV Av Accuracy Scores is 85.99% and the std is 4.62%
-Using the model ExtraTreesClassifier CV Av Accuracy Scores is 83.41% and the std is 5.41%
+* Using the model Logistic Regression CV Av Accuracy Scores is 85.43% and the std is 5.39%
+
+* Using the model Random Forest Classifier CV Av Accuracy Scores is 82.74% and the std is 5.66%
+
+* Using the model Perceptron CV Av Accuracy Scores is 77.90% and the std is 12.62%
+
+* Using the model SGD Classifier CV Av Accuracy Scores is 82.86% and the std is 7.34%
+
+* Using the model Decision Tree Classifier CV Av Accuracy Scores is 82.28% and the std is 5.35%
+
+* Using the model K-Nearest Neighbors Classifier CV Av Accuracy Scores is 84.53% and the std is 5.06%
+
+* Using the model Support Vector Machines (SVC) CV Av Accuracy Scores is 86.00% and the std is 5.53%
+
+* Using the model Gaussian Naive Bayes CV Av Accuracy Scores is 84.76% and the std is 5.85%
+
+* Using the model Bagging Classifier CV Av Accuracy Scores is 84.32% and the std is 5.32%
+
+* Using the model Gradient Boosting CV Av Accuracy Scores is 86.22% and the std is 4.66%
+
+* Using the model XGBC CV Av Accuracy Scores is 84.77% and the std is 5.34%
+
+* Using the model Hist Gradient Boosting Classifier CV Av Accuracy Scores is 84.20% and the std is 4.81%
+
+* Using the model LGBM CV Av Accuracy Scores is 84.31% and the std is 5.04%
+
+* Using the model ADABoost CV Av Accuracy Scores is 85.99% and the std is 4.62%
+
+* Using the model ExtraTreesClassifier CV Av Accuracy Scores is 83.41% and the std is 5.41%
 ```
 
 <img width="715" alt="Screenshot 2023-04-09 at 22 58 22" src="https://user-images.githubusercontent.com/109058050/230796237-4c5d5752-91fa-4d58-8d7c-fcab0f5719a9.png">
