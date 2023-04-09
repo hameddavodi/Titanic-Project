@@ -162,10 +162,37 @@ dtype: int64
 '''
 ```
 
+### AGE
 
+Lets plot the data:
+```python
+ax=train_df["Age"].hist(bins=20, density=True,stacked=False,color='teal', alpha=0.6)
+train_df["Age"].plot(kind='density',color='black')
+ax.set(xlabel='Age')
+plt.xlim(-10,85)
+plt.show()
+```
+<img width="519" alt="Screenshot 2023-04-09 at 10 58 55" src="https://user-images.githubusercontent.com/109058050/230763666-536f00f4-3a91-453e-a22e-e4d6f32fe574.png">
 
+Golden Note: 
+"
+Since "Age" is (right) skewed, using the mean might give us biased results by filling in ages that are older than desired. To deal with this, we'll use the median to impute the missing values.
+"
 
+Calculating both median and mean:
+`train_df["Age"].median(skipna=True)` 
+`train_df["Age"].mean(skipna=True)`
 
+The mean of "Age" is 29.70
+The median of "Age" is 28.00
 
+### Cabin
 
+`train_df['Cabin'].isnull().sum()` 
+
+687 of all 891 data missing. So it cannot be fixed by imputation. 
+
+I'll ignore this variable in our model.
+
+### Embarked
 
