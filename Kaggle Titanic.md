@@ -317,7 +317,7 @@ final_test['IsMinor']=np.where(final_test['Age']<=16, 1, 0)
 
 Create Heatmap of the variables:
 
-```
+```python
 Selected_features = ['Age', 'TravelAlone', 'Pclass_1', 'Pclass_2', 'Embarked_C', 
                      'Embarked_S', 'Sex_male', 'IsMinor','Survived']
 X = final_train[Selected_features]
@@ -331,7 +331,7 @@ plt.show()
 
 What if we select our features based on the correlations with Survived:
 
-```
+```python
 threshold = 0.05
 
 # calculate the correlation between each feature and 'Survived'
@@ -351,8 +351,10 @@ final_df = final_test[final_features]
 
 final_df
 ```
+
 ### Run LRG Model 
-```
+
+```python
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score 
@@ -403,7 +405,7 @@ print("Using a threshold of %.3f " % thr[idx] + "guarantees a sensitivity of %.3
 
 and finally sumbit the output file : ) 
 
-```
+```python
 final_test['Survived'] = y_pred
 final_test['PassengerId'] = test_df['PassengerId']
 
