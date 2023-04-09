@@ -119,6 +119,7 @@ output['Survived'].describe
 Name: Survived, Length: 418, dtype: int64>
 ```
 ## But, There are many other approaches:
+
 ### Kernel of SarahG and SUSHIL YEOTIWAD
 
 ### Import Data & Python Packages
@@ -178,13 +179,11 @@ Golden Note:
 
 > Since "Age" is (right) skewed, using the mean might give us biased results by filling in ages that are older than desired. To deal with this, we'll use the median to impute the missing values.
 
-
 Calculating both median and mean:
 
 `train_df["Age"].median(skipna=True)` 
 
 `train_df["Age"].mean(skipna=True)`
-
 
 The mean of "Age" is 29.70
 
@@ -214,10 +213,10 @@ Tip: Another way to plot histogram is to use sns lib:
 ```python
 sns.histplot(train_df["Embarked"], color='grey')
 ```
+
 <img width="525" alt="Screenshot 2023-04-09 at 11 22 25" src="https://user-images.githubusercontent.com/109058050/230765043-b40e5384-57e7-4683-9256-b0d8d24bb2e3.png">
 
 > By far the most passengers boarded in Southhampton, so we'll impute those 2 NaN's w/ "S".
-
 
 ### Final Adjustments 
 
@@ -227,14 +226,12 @@ sns.histplot(train_df["Embarked"], color='grey')
    > If "Embarked" is missing for a riven row, I'll impute with "S" (the most common boarding port).
    > I'll ignore "Cabin" as a variable. There are too many missing values for imputation. Based on the information available, it appears that this value is associated with the passenger's class and fare paid.
 
-
 ```pyhton
 train_data = train_df.copy()
 train_data["Age"].fillna(train_df["Age"].median(skipna=True), inplace=True)
 train_data["Embarked"].fillna(train_df['Embarked'].value_counts().idxmax(), inplace=True)
 train_data.drop('Cabin', axis=1, inplace=True)
 ```
-
 
 Comparing "Age" as an example of data adjustment:
 
@@ -247,9 +244,7 @@ train_df["Age"].hist(bins=20,density=True , stacked= True, alpha=0.4)
 
 ### Additional Variables
 
-
 > According to the Kaggle data dictionary, both SibSp and Parch relate to traveling with family. For simplicity's sake (and to account for possible multicollinearity), I'll combine the effect of these variables into one categorical predictor: whether or not that individual was traveling alone
-
 
 ```python
 train_data['TravelAlone']=np.where((train_data["SibSp"]+train_data["Parch"])>0, 0, 1)
