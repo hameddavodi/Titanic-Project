@@ -53,7 +53,8 @@ dtypes: float64(6), int64(6), uint8(13)
 memory usage: 149.6 KB
 '''
 ```
-
+Some adjustments:
+```python
 train_clean = alldata.loc[alldata.Survived.notnull()].copy()
 
 test_clean = alldata.loc[alldata.Survived.isnull()].drop('Survived', axis = 1).copy()
@@ -71,7 +72,7 @@ test_clean_fare_sc = pd.DataFrame(scaler.transform(test_clean[['fare_pp']]), col
 
 X = pd.concat([X, X_fare_sc], axis = 1).drop('fare_pp', axis = 1)
 test_clean = pd.concat([test_clean, test_clean_fare_sc], axis = 1).drop('fare_pp', axis = 1)
-
+```
 
 ### Modeling
 
