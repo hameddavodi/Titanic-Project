@@ -118,10 +118,11 @@ output['Survived'].describe
 417    0
 Name: Survived, Length: 418, dtype: int64>
 ```
-# But, There are many other approaches:
-## Kernel of SarahG and SUSHIL YEOTIWAD
+## But, There are many other approaches:
+### Kernel of SarahG and SUSHIL YEOTIWAD
 
 ### Import Data & Python Packages
+```python
 import numpy as np 
 import pandas as pd 
 from sklearn import preprocessing
@@ -132,15 +133,14 @@ sns.set(style="white") #white background style for seaborn plots
 sns.set(style="whitegrid", color_codes=True)
 import warnings
 warnings.simplefilter(action='ignore')
-#from sklearn.linear_model import LogisticRegression
-#from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_selection import RFE
+```
+Read CSV train data file into DataFrame
+`train_df = pd.read_csv("../input/titanic/train.csv")`
 
-
-# Read CSV train data file into DataFrame
-train_df = pd.read_csv("../input/titanic/train.csv")
-
-# Read CSV test data file into DataFrame
-test_df = pd.read_csv("../input/titanic/test.csv")
+Read CSV test data file into DataFrame
+`test_df = pd.read_csv("../input/titanic/test.csv")`
 
 Check if there is any missing value:
 ```python 
