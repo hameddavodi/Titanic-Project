@@ -334,7 +334,7 @@ Create Heatmap of the variables:
 
 ```
 Selected_features = ['Age', 'TravelAlone', 'Pclass_1', 'Pclass_2', 'Embarked_C', 
-                     'Embarked_S', 'Sex_male', 'IsMinor']
+                     'Embarked_S', 'Sex_male', 'IsMinor','Survived']
 X = final_train[Selected_features]
 
 plt.subplots(figsize=(8, 5))
@@ -343,4 +343,23 @@ plt.show()
 ```
 
 <img width="522" alt="Screenshot 2023-04-09 at 11 57 56" src="https://user-images.githubusercontent.com/109058050/230766368-7e23ac86-45e6-4a4c-a9c6-5f47fd2bfd67.png">
+
+What if we select our features based on the corrolations with Survived:
+
+```
+threshold = 0.15
+
+# calculate the correlation between each feature and 'Survived'
+correlations = final_train.corr()['Survived']
+
+# create a new DataFrame with the absolute value of the correlations
+abs_correlations = abs(correlations)
+
+# select only the features with a correlation greater than the threshold
+final_features = abs_correlations[abs_correlations > threshold].index.tolist()
+
+# create a new DataFrame with only the selected features
+final_df = final_train[final_features]
+```
+
 
