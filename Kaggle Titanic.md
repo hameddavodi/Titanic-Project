@@ -175,9 +175,9 @@ plt.show()
 <img width="519" alt="Screenshot 2023-04-09 at 10 58 55" src="https://user-images.githubusercontent.com/109058050/230763666-536f00f4-3a91-453e-a22e-e4d6f32fe574.png">
 
 Golden Note: 
-"
-Since "Age" is (right) skewed, using the mean might give us biased results by filling in ages that are older than desired. To deal with this, we'll use the median to impute the missing values.
-"
+
+> Since "Age" is (right) skewed, using the mean might give us biased results by filling in ages that are older than desired. To deal with this, we'll use the median to impute the missing values.
+
 
 Calculating both median and mean:
 
@@ -216,20 +216,16 @@ sns.histplot(train_df["Embarked"], color='grey')
 ```
 <img width="525" alt="Screenshot 2023-04-09 at 11 22 25" src="https://user-images.githubusercontent.com/109058050/230765043-b40e5384-57e7-4683-9256-b0d8d24bb2e3.png">
 
-By far the most passengers boarded in Southhampton, so we'll impute those 2 NaN's w/ "S".
+> By far the most passengers boarded in Southhampton, so we'll impute those 2 NaN's w/ "S".
 
 
 ### Final Adjustments 
 
-"" 
+> Based on my assessment of the missing values in the dataset, I'll make the following changes to the data:
 
-Based on my assessment of the missing values in the dataset, I'll make the following changes to the data:
-
-   If "Age" is missing for a given row, I'll impute with 28 (median age).
-   If "Embarked" is missing for a riven row, I'll impute with "S" (the most common boarding port).
-   I'll ignore "Cabin" as a variable. There are too many missing values for imputation. Based on the information available, it appears that this value is associated with the passenger's class and fare paid.
-
-""
+   > If "Age" is missing for a given row, I'll impute with 28 (median age).
+   > If "Embarked" is missing for a riven row, I'll impute with "S" (the most common boarding port).
+   > I'll ignore "Cabin" as a variable. There are too many missing values for imputation. Based on the information available, it appears that this value is associated with the passenger's class and fare paid.
 
 
 ```pyhton
@@ -251,9 +247,9 @@ train_df["Age"].hist(bins=20,density=True , stacked= True, alpha=0.4)
 
 ### Additional Variables
 
-""
-According to the Kaggle data dictionary, both SibSp and Parch relate to traveling with family. For simplicity's sake (and to account for possible multicollinearity), I'll combine the effect of these variables into one categorical predictor: whether or not that individual was traveling alone
-""
+
+> According to the Kaggle data dictionary, both SibSp and Parch relate to traveling with family. For simplicity's sake (and to account for possible multicollinearity), I'll combine the effect of these variables into one categorical predictor: whether or not that individual was traveling alone
+
 
 ```python
 train_data['TravelAlone']=np.where((train_data["SibSp"]+train_data["Parch"])>0, 0, 1)
@@ -279,7 +275,7 @@ Name: TravelAlone, Length: 891, dtype: int64
 '''
 ```
 
-I'll also create categorical variables for Passenger Class ("Pclass"), Gender ("Sex"), and Port Embarked ("Embarked").
+> I'll also create categorical variables for Passenger Class ("Pclass"), Gender ("Sex"), and Port Embarked ("Embarked").
 
 ```python
 training=pd.get_dummies(train_data, columns=["Pclass","Embarked","Sex"])
@@ -324,12 +320,6 @@ final_test['IsMinor']=np.where(final_test['Age']<=16, 1, 0)
 
 #### Feature Selection
 
-> Recursive feature elimination
-    Given an external estimator that assigns weights to features, recursive feature elimination (RFE) is to select features by recursively considering smaller and smaller sets of features. First, the estimator is trained on the initial set of features and the importance of each feature is obtained either through a coef_ attribute or through a featureimportances attribute. Then, the least important features are pruned from current set of features.That procedure is recursively repeated on the pruned set until the desired number of features to select is eventually reached.
-
-References:
-http://scikit-learn.org/stable/modules/feature_selection.html
-
 Create Heatmap of the variables:
 
 ```
@@ -344,7 +334,7 @@ plt.show()
 
 <img width="522" alt="Screenshot 2023-04-09 at 11 57 56" src="https://user-images.githubusercontent.com/109058050/230766368-7e23ac86-45e6-4a4c-a9c6-5f47fd2bfd67.png">
 
-What if we select our features based on the corrolations with Survived:
+What if we select our features based on the correlations with Survived:
 
 ```
 threshold = 0.05
