@@ -140,3 +140,19 @@ Using the model LGBM CV Av Accuracy Scores is 84.31% and the std is 5.04%
 Using the model ADABoost CV Av Accuracy Scores is 85.99% and the std is 4.62%
 Using the model ExtraTreesClassifier CV Av Accuracy Scores is 83.41% and the std is 5.41%
 ```
+
+<img width="715" alt="Screenshot 2023-04-09 at 22 58 22" src="https://user-images.githubusercontent.com/109058050/230796237-4c5d5752-91fa-4d58-8d7c-fcab0f5719a9.png">
+
+and to submit the results:
+```python
+
+
+svc = SVC()
+svc.fit(X, y)
+y_hat = svc.predict(test_clean[features])
+pd.DataFrame({
+     'PassengerId': test.PassengerId,
+     'Survived' : y_hat.astype(int)
+ }).to_csv('submission.csv', index = False)
+```
+
