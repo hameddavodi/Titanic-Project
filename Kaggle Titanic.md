@@ -406,6 +406,7 @@ print("Using a threshold of %.3f " % thr[idx] + "guarantees a sensitivity of %.3
 and finally sumbit the output file : ) 
 
 ```python
+y_pred = logreg.predict(final_df)
 final_test['Survived'] = y_pred
 final_test['PassengerId'] = test_df['PassengerId']
 
