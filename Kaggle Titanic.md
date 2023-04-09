@@ -180,8 +180,11 @@ Since "Age" is (right) skewed, using the mean might give us biased results by fi
 "
 
 Calculating both median and mean:
+
 `train_df["Age"].median(skipna=True)` 
+
 `train_df["Age"].mean(skipna=True)`
+
 
 The mean of "Age" is 29.70
 The median of "Age" is 28.00
