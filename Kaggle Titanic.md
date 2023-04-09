@@ -118,21 +118,6 @@ output['Survived'].describe
 417    0
 Name: Survived, Length: 418, dtype: int64>
 ```
-Also we can visally see the distribution of 0 and 1:
-
-```python
-import seaborn as sns
-
-sns.displot(output['Survived'])
-
-<seaborn.axisgrid.FacetGrid at 0x7a089fc86450>
-```
-
-![__results___7_1](https://user-images.githubusercontent.com/109058050/230635679-a1fd6d6d-0048-4590-9cb3-f5c1eaf81586.f
-
-
-
-
 # But, There are many other approaches:
 ## Kernel of SarahG and SUSHIL YEOTIWAD
 
@@ -157,6 +142,25 @@ train_df = pd.read_csv("../input/titanic/train.csv")
 # Read CSV test data file into DataFrame
 test_df = pd.read_csv("../input/titanic/test.csv")
 
+Check if there is any missing value:
+```python 
+train_df.isnull().sum()
+'''
+PassengerId      0
+Survived         0
+Pclass           0
+Name             0
+Sex              0
+Age            177
+SibSp            0
+Parch            0
+Ticket           0
+Fare             0
+Cabin          687
+Embarked         2
+dtype: int64
+'''
+```
 
 
 
