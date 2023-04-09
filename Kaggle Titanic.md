@@ -187,6 +187,7 @@ Calculating both median and mean:
 
 
 The mean of "Age" is 29.70
+
 The median of "Age" is 28.00
 
 ### Cabin
