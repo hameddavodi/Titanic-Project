@@ -199,4 +199,89 @@ The median of "Age" is 28.00
 I'll ignore this variable in our model.
 
 ### Embarked
+We have enough data for "Embarked" 
+
+`train_df['Embarked'].value_counts()`
+
+```
+Embarked
+S    644
+C    168
+Q     77
+```
+
+Tip: Another way to plot histogram is to use sns lib:
+```python
+sns.histplot(train_df["Embarked"], color='grey')
+```
+<img width="525" alt="Screenshot 2023-04-09 at 11 22 25" src="https://user-images.githubusercontent.com/109058050/230765043-b40e5384-57e7-4683-9256-b0d8d24bb2e3.png">
+
+By far the most passengers boarded in Southhampton, so we'll impute those 2 NaN's w/ "S".
+
+
+### Final Adjustments 
+
+"" 
+
+Based on my assessment of the missing values in the dataset, I'll make the following changes to the data:
+
+   If "Age" is missing for a given row, I'll impute with 28 (median age).
+   If "Embarked" is missing for a riven row, I'll impute with "S" (the most common boarding port).
+   I'll ignore "Cabin" as a variable. There are too many missing values for imputation. Based on the information available, it appears that this value is associated with the passenger's class and fare paid.
+
+""
+
+
+```pyhton
+train_data = train_df.copy()
+train_data["Age"].fillna(train_df["Age"].median(skipna=True), inplace=True)
+train_data["Embarked"].fillna(train_df['Embarked'].value_counts().idxmax(), inplace=True)
+train_data.drop('Cabin', axis=1, inplace=True)
+```
+
+
+Comparing "Age" as an example of data adjustment:
+
+```python
+train_data["Age"].hist(bins=20, density=True, stacked=True, alpha=0.7)
+train_df["Age"].hist(bins=20,density=True , stacked= True, alpha=0.4)
+```
+
+<img width="517" alt="Screenshot 2023-04-09 at 11 29 18" src="https://user-images.githubusercontent.com/109058050/230765367-1a5a22a5-6151-48ff-b9bf-2f7af26560b3.png">
+
+### Additional Variables
+
+""
+According to the Kaggle data dictionary, both SibSp and Parch relate to traveling with family. For simplicity's sake (and to account for possible multicollinearity), I'll combine the effect of these variables into one categorical predictor: whether or not that individual was traveling alone
+""
+
+```python
+train_data['TravelAlone']=np.where((train_data["SibSp"]+train_data["Parch"])>0, 0, 1)
+train_data.drop('SibSp', axis=1, inplace=True)
+train_data.drop('Parch', axis=1, inplace=True)
+```
+and we can check the output: 
+```python 
+train_data['TravelAlone']
+'''
+0      0
+1      0
+2      1
+3      0
+4      1
+      ..
+886    1
+887    1
+888    0
+889    1
+890    1
+Name: TravelAlone, Length: 891, dtype: int64
+'''
+```
+
+I'll also create categorical variables for Passenger Class ("Pclass"), Gender ("Sex"), and Port Embarked ("Embarked").
+
+
+
+
 
