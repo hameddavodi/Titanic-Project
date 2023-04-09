@@ -281,7 +281,12 @@ Name: TravelAlone, Length: 891, dtype: int64
 
 I'll also create categorical variables for Passenger Class ("Pclass"), Gender ("Sex"), and Port Embarked ("Embarked").
 
+```python
+training=pd.get_dummies(train_data, columns=["Pclass","Embarked","Sex"])
+training.drop('Sex_female', axis=1, inplace=True)
+training.drop('PassengerId', axis=1, inplace=True)
+training.drop('Name', axis=1, inplace=True)
+training.drop('Ticket', axis=1, inplace=True)
 
-
-
-
+final_train = training
+```
