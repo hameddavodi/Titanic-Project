@@ -347,7 +347,7 @@ plt.show()
 What if we select our features based on the corrolations with Survived:
 
 ```
-threshold = 0.15
+threshold = 0.05
 
 # calculate the correlation between each feature and 'Survived'
 correlations = final_train.corr()['Survived']
@@ -357,9 +357,75 @@ abs_correlations = abs(correlations)
 
 # select only the features with a correlation greater than the threshold
 final_features = abs_correlations[abs_correlations > threshold].index.tolist()
+# Remove the "Survived" because of autocorrolation
+
+final_features.remove("Survived")
 
 # create a new DataFrame with only the selected features
-final_df = final_train[final_features]
+final_df = final_test[final_features]
+
+final_df
 ```
+### Run LRG Model 
+```
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score 
+from sklearn.metrics import confusion_matrix, precision_recall_curve, roc_curve, auc, log_loss
 
+# create X (features) and y (response)
+X = final_train[final_features]
+y = final_train['Survived']
 
+# use train/test split with different random_state values
+# we can change the random_state values that changes the accuracy scores
+# the scores change a lot, this is why testing scores is a high-variance estimate
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=2)
+
+# check classification scores of logistic regression
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
+y_pred = logreg.predict(X_test)
+y_pred_proba = logreg.predict_proba(X_test)[:, 1]
+[fpr, tpr, thr] = roc_curve(y_test, y_pred_proba)
+print('Train/Test split results:')
+print(logreg.__class__.__name__+" accuracy is %2.3f" % accuracy_score(y_test, y_pred))
+print(logreg.__class__.__name__+" log_loss is %2.3f" % log_loss(y_test, y_pred_proba))
+print(logreg.__class__.__name__+" auc is %2.3f" % auc(fpr, tpr))
+
+idx = np.min(np.where(tpr > 0.95)) # index of the first threshold for which the sensibility > 0.95
+
+plt.figure()
+plt.plot(fpr, tpr, color='coral', label='ROC curve (area = %0.3f)' % auc(fpr, tpr))
+plt.plot([0, 1], [0, 1], 'k--')
+plt.plot([0,fpr[idx]], [tpr[idx],tpr[idx]], 'k--', color='blue')
+plt.plot([fpr[idx],fpr[idx]], [0,tpr[idx]], 'k--', color='blue')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate (1 - specificity)', fontsize=14)
+plt.ylabel('True Positive Rate (recall)', fontsize=14)
+plt.title('Receiver operating characteristic (ROC) curve')
+plt.legend(loc="lower right")
+plt.show()
+
+print("Using a threshold of %.3f " % thr[idx] + "guarantees a sensitivity of %.3f " % tpr[idx] +  
+      "and a specificity of %.3f" % (1-fpr[idx]) + 
+      ", i.e. a false positive rate of %.2f%%." % (np.array(fpr[idx])*100))
+```
+> Using a threshold of 0.076 guarantees a sensitivity of 0.966 and a specificity of 0.320, i.e. a false positive rate of 68.00%.
+
+<img width="505" alt="Screenshot 2023-04-09 at 14 35 37" src="https://user-images.githubusercontent.com/109058050/230772800-1fa0d99b-c59d-49d2-bd79-cdc0c390077c.png">
+
+and finally sumbit the output file : ) 
+
+```
+final_test['Survived'] = y_pred
+final_test['PassengerId'] = test_df['PassengerId']
+
+submission = final_test[['PassengerId','Survived']]
+
+submission.to_csv("submission.csv", index=False)
+
+submission.tail()
+```
+I was able to achieve 98% accuracy in identifying "Survived" using a correlation matrix threshold, which is higher than the top-ranked participant on the leaderboard. However, I am unsure about how Kaggle scoring works.
