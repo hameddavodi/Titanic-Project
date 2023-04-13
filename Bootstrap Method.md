@@ -8,7 +8,7 @@ Here's an example of how to implement the Bootstrap method in Python to estimate
 import numpy as np
 
 # Generate sample data
-np.random.seed(123)
+np.random.seed(200)
 sample = np.random.normal(loc=10, scale=2, size=100)
 
 # Calculate the mean of the sample
