@@ -39,7 +39,7 @@ confidence_interval
 ```
 array([ 9.57324432, 10.49708713])
 
-and we can plot the bootstrap means with:
+And we can plot the bootstrap means with:
 ```python 
 sns.displot(bootstrap_means)
 ```
