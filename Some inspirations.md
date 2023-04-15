@@ -87,7 +87,7 @@ features = ['in_WCF', 'WCF_Died', 'WCF_Survived', 'family_size', 'group_size', '
 X = X[features].copy()
 
 ```
-and then:
+And then:
 
 ```python 
 models = {
