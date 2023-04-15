@@ -226,6 +226,7 @@ sns.histplot(train_df["Embarked"], color='grey')
    > If "Embarked" is missing for a riven row, I'll impute with "S" (the most common boarding port).
    > I'll ignore "Cabin" as a variable. There are too many missing values for imputation. Based on the information available, it appears that this value is associated with the passenger's class and fare paid.
 
+
 ```pyhton
 train_data = train_df.copy()
 train_data["Age"].fillna(train_df["Age"].median(skipna=True), inplace=True)
