@@ -227,7 +227,7 @@ sns.histplot(train_df["Embarked"], color='grey')
    > I'll ignore "Cabin" as a variable. There are too many missing values for imputation. Based on the information available, it appears that this value is associated with the passenger's class and fare paid.
 
 
-```pyhton
+```python
 train_data = train_df.copy()
 train_data["Age"].fillna(train_df["Age"].median(skipna=True), inplace=True)
 train_data["Embarked"].fillna(train_df['Embarked'].value_counts().idxmax(), inplace=True)
